@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import TroyeSiyan from '../app/troyeSiyan.png';
+import { StarRating } from '.';
 
 const Musicard = () => {
     return (
@@ -13,9 +14,11 @@ const Musicard = () => {
                 <div className="wave absolute h-96 w-96 opacity-60 top-0 left-0 -ml-48 -mt-48 rounded-full bg-gradient-to-r from-veronica to-red-orange animate-spin"></div>
                 <div className="wave absolute h-96 w-96 opacity-60 top-1 left-0 -ml-48 -mt-48 rounded-full bg-gradient-to-r from-veronica to-red-orange animate-spin animation-delay-1000"></div>
                 <div className="wave absolute h-96 w-96 opacity-60 top-1 left-0 -ml-48 -mt-48 rounded-full bg-gradient-to-r from-veronica to-red-orange animate-spin animation-delay-2000"></div>
-                <div className="info absolute bottom-4 left-0 right-0 text-center">
-                    <div className="title text-lg font-medium text-gray-700 mb-2">Your Title</div>
+                <div className="h-96 flex flex-col items-center justify-end space-y-2 pb-2">
+                    
+                    <div className="title text-lg font-medium text-gray-700">Your Title</div>
                     <div className="artist text-xs text-gray-400 uppercase tracking-wide">Artist Name</div>
+                    <div> <StarRating></StarRating></div>
                 </div>
             </div>
         </div>

@@ -3,7 +3,9 @@ import FriendsList from "./FriendsList"
 import IntroNavbar from "./IntroNavbar"
 import { Inputbox } from "./InputBox"
 import Musicard from "./Musicard"
-import MusicCardContainer from "./MusicCardContainer"
+import { MusicCardContainer } from "./MusicCardContainer"
+import { StarRating } from "./StarRating"
+import { FriendComponent } from "./FriendComponent"
 export
 {
     Navbar,
@@ -11,6 +13,8 @@ export
     FriendsList,
     Inputbox,
     Musicard,
-    MusicCardContainer
+    MusicCardContainer,
+    StarRating,
+    FriendComponent
     
 }
