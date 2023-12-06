@@ -7,6 +7,7 @@ import { MusicCardContainer } from "./MusicCardContainer"
 import { StarRating } from "./StarRating"
 import { FriendComponent } from "./FriendComponent"
 import TrackList from "./TrackList"
+
 export
 {
     Navbar,
@@ -17,6 +18,7 @@ export
     MusicCardContainer,
     StarRating,
     FriendComponent,
-    TrackList
+    TrackList,
+    
     
 }

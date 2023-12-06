@@ -1,25 +1,22 @@
-import { Musicard } from "@/components"
+"use client"
 
-const getTracksData = async () => {
-  const res = await fetch("http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_tracks")
-  return res.json()
-}
+import Navbar from '@/components/Navbar';
 
-
-export default async function ListOfTracks(){
-  const tracks = await getTracksData()
-  return(
-    <div className="flex">
-        {/* Render your tracks here */}
-        {tracks.map((track: any) => {
-          return (
-            <div className="">
-              <Musicard tName={track.track_name} tAlbum={track.track_album} tArtist={track.track_artist} tId={track.track_id} tRY={track.track_release_year}></Musicard>
-            </div>
-          )
-        })
-
-        }
+import React from 'react';
+import FileUploadForm from '@/components/FileUploadForm';
+const Home = () => {
+  return (
+    <div>
+      <div>
+      <Navbar></Navbar>
       </div>
-  )
-}
+      <div className='flex flex-col w-full h-screen justify-center items-center '>
+        <div className='text-4xl m-4'>Upload JSON File</div>
+        <FileUploadForm />
+        </div>
+      
+    </div>
+  );
+};
+
+export default Home;
