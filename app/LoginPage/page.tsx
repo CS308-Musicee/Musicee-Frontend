@@ -1,27 +1,34 @@
-import React from 'react'
-import Image from 'next/image'
-import { IntroNavbar, FriendsList } from '@/components'
-import Link from 'next/link'
+// SignUpPage.tsx
+"use client"
+import React from 'react';
+import { IntroNavbar, FriendsList } from '@/components';
+import Login from '@/components/Login'; // Import the SignUpForm component
 
-const page = () => {
-    return (
-        <div className='w-full min-h-screen'>
-            <IntroNavbar />
+const LoginPage: React.FC = () => {
+  const containerStyle = {
+    backgroundColor: '#fbcfe8',
+  };
 
-            <div className='w-full min-h-screen bg-pink-200'>
-                <div className='min-h-screen flex justify-center items-center text-4xl '>
-                    LOGIN PAGE
-                    <button className="text-xl h-8 w-64 bg-slate-700 text-white font-semibold rounded-md shadow-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-                        <Link href="/homepage">Login Your Account</Link>
-
-                    </button>
-                </div>
-                {/* <FriendsList/> */}
-            </div>
-
-
+  return (
+    <div className="w-full min-h-screen" style={containerStyle}>
+      <IntroNavbar />
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="w-full max-w-xs">
+          <Login />
         </div>
-    )
-}
-
-export default page
+      </div>
+    </div>
+  );
+};
+/*
+return (
+    <div className="w-full min-h-screen" style={containerStyle}>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="w-full max-w-xs">
+          <Login />
+        </div>
+      </div>
+    </div>
+  );
+};*/
+export default LoginPage;
