@@ -1,9 +1,13 @@
 // app/SignInPage/page.tsx
 "use client"
+import { useRouter } from 'next/navigation';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { IntroNavbar, FriendsList } from '@/components';
 
+
 const Login: React.FC = () => {
+
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,6 +45,9 @@ const Login: React.FC = () => {
         // Store tokens in localStorage or a secure storage solution
         localStorage.setItem('accessToken', responseData.access_token);
         localStorage.setItem('refreshToken', responseData.refresh_token);
+        localStorage.setItem('username', userData.username); // storing the username
+        
+        router.push('/homepage');
 
         // You can redirect the user to another page or perform other actions on successful login
         console.log('Login successful:', responseData);
