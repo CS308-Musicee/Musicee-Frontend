@@ -28,7 +28,7 @@ const Login: React.FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const userData = { username, email, password };
+    const userData = { username, password };
 
     try {
       const response = await fetch('http://musicee.us-west-2.elasticbeanstalk.com/user/login', {
@@ -91,7 +91,7 @@ const Login: React.FC = () => {
           onChange={handleUsernameChange}
         />
       </div>
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
           Email
         </label>
@@ -103,7 +103,7 @@ const Login: React.FC = () => {
           value={email}
           onChange={handleEmailChange}
         />
-      </div>
+      </div> */}
       <div className="mb-6">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
           Password

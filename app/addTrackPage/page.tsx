@@ -10,7 +10,7 @@ const Home = () => {
       <div>
       <Navbar></Navbar>
       </div>
-      <div className='flex flex-col w-full h-screen justify-center items-center '>
+      <div className='flex flex-col w-full h-screen justify-center items-center bg-pink-200'>
         <div className='text-4xl m-4'>Upload JSON File</div>
         <FileUploadForm />
         </div>

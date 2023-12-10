@@ -19,7 +19,7 @@ const FriendsList = () => {
                         'Content-Type': 'application/json',
                     },
                 });
-                console.log("respomnse : ");
+                console.log("response : ");
                 if (response.ok) {
                     const data = await response.json();
                     console.log('User-specific data received:', data);
