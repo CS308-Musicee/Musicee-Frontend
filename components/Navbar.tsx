@@ -70,11 +70,11 @@ const navbar = () => {
           </button>
           <button className="text-lg text-slate-700 font-semibold ">
 
-            <Link href="/userPages/StatisticsPage">Statistics</Link>
+            <Link href="/addTrackPage">Add Track</Link>
 
           </button>
           <button className="text-lg  text-slate-700 font-semibold ">
-            <Link href="/homepage">{userData && userData.username && String(userData.username)}</Link>
+            <Link href="/userPages/ProfilePage">Profile</Link>
 
           </button>
           <button className="h-8 w-24 bg-slate-700 text-white font-semibold rounded-md shadow-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">

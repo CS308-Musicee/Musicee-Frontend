@@ -1,3 +1,4 @@
+
 import { Musicard } from "@/components"
 
 const getTracksData = async () => {
