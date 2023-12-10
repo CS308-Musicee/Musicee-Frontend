@@ -1,10 +1,10 @@
-// SignUpPage.tsx
+// SignUpPage/page.tsx
 "use client"
 import React from 'react';
 import { IntroNavbar, FriendsList } from '@/components';
 import SignUp from '@/components/SignUp'; // Import the SignUpForm component
 
-const SignUpPage: React.FC = () => {
+const page: React.FC = () => {
   const containerStyle = {
     backgroundColor: '#fbcfe8',
   };
@@ -21,4 +21,4 @@ const SignUpPage: React.FC = () => {
   );
 };
 
-export default SignUpPage;
+export default page;

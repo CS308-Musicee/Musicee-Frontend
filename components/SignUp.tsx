@@ -1,10 +1,10 @@
 "use client"
 
-// SignUpForm.tsx
+// app/components/SignUp.tsx
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 
 
-const SignUpForm: React.FC = () => {
+const SignUp: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -133,4 +133,4 @@ const SignUpForm: React.FC = () => {
   );
 };
 
-export default SignUpForm;
+export default SignUp;

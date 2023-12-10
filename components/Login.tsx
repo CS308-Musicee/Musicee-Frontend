@@ -1,4 +1,4 @@
-// app/SignInPage/page.tsx
+// app/components/Login.tsx
 "use client"
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { IntroNavbar, FriendsList } from '@/components';
