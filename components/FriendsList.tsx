@@ -19,10 +19,9 @@ const FriendsList = () => {
                         'Content-Type': 'application/json',
                     },
                 });
-                console.log("response : ");
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('User-specific data received:', data);
+                    //console.log('User-specific data received:', data);
                     setUserData(data);
                     // Process the data or update state as needed
                 } else {
@@ -45,7 +44,7 @@ const FriendsList = () => {
     }, []); // Empty dependency array to mimic componentDidMount behavior
 
 
-    console.log(userData);
+    //console.log(userData);
 
     return (
         <div className="grow min-h-screen w-1/6 bg-slate-400 fixed right-0 shadow-xl " >

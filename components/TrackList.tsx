@@ -11,11 +11,10 @@ export default async function ListOfTheTracks(){
   const tracks = await getTracksData()
   return(
     <div className="flex">
-        {/* Render your tracks here */}
         {tracks.map((track: any) => {
           return (
-            <div className="">
-              <Musicard tName={track.track_name} tAlbum={track.track_album} tArtist={track.track_artist} tId={track.track_id} tRY={track.track_release_year}></Musicard>
+            <div className="" >
+              <Musicard key={track.track_id} tName={track.track_name} tAlbum={track.track_album} tArtist={track.track_artist} tId={track.track_id} tRY={track.track_release_year}></Musicard>
             </div>
           )
         })
