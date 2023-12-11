@@ -1,4 +1,4 @@
-# CS 308 Term Project - Musicee
+# CS 308 Term Project - Musicee (Front-End)
 
 ## Project Overview
 
