@@ -27,7 +27,7 @@ export const ProfileStat = () => {
                 console.log("respomnse : ");
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('User-specific data received:', data);
+                    //console.log('User-specific data received:', data);
                     setUserData(data);
                     // Process the data or update state as needed
                 } else {
