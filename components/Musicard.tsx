@@ -83,7 +83,7 @@ const Musicard = ({ tName, tAlbum, tArtist, tId, tRY }: any) => {
                 {/* Other components */}
                 <div className='h-96 flex flex-row justify-evenly items-end pb-4 '>
                     <div className="">
-                        <div className="title text-lg font-medium text-gray-700">{tName} {tId}</div>
+                        <div className="title text-lg font-medium text-gray-700">{tName}</div>
                         {tArtist.map((artist: any) => {
           return (
             <div className="artist text-xs text-gray-400 uppercase tracking-wide">-{artist} </div>
