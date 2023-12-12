@@ -5,6 +5,9 @@ import Image from 'next/image';
 import TroyeSiyan from '../app/troyeSiyan.png';
 import { StarRating } from '.';
 
+
+  
+
 const Musicard = ({ tName, tAlbum, tArtist, tId, tRY }: any) => {
     const [liked, setLiked] = useState(false);
 
@@ -16,7 +19,6 @@ const Musicard = ({ tName, tAlbum, tArtist, tId, tRY }: any) => {
 
         const username = localStorage.getItem('username');
         const accessToken = localStorage.getItem('accessToken');
-
         if (accessToken && username) {
             if (!liked) {
                 try {
@@ -73,21 +75,20 @@ const Musicard = ({ tName, tAlbum, tArtist, tId, tRY }: any) => {
     return (
         <div className="flex p-4">
             <div className="music-card bg-white shadow-md rounded-md overflow-hidden relative w-72 h-96">
-                <div className="image static">
-                    <Image src={TroyeSiyan} alt="Music Image" className="absolute z-10 opacity-80 h-72 w-72" />
-                    <div className="absolute h-12 w-full top-96 z-10 bg-gradient-to-b from-transparent to-pink-600"></div>
+                <div className="image relative z-0">
+                    <Image src={TroyeSiyan} alt="Music Image" className="absolute opacity-80 h-72 w-72" />
+                    <div className="absolute h-12 w-full top-96 bg-gradient-to-b from-transparent to-pink-600"></div>
                 </div>
                 {/* Other components */}
-                <div className='h-96 flex flex-row justify-evenly items-end pb-4 '>
+                <div className='relative h-96 flex flex-row justify-evenly items-end pb-4 z-10'>
                     <div className="">
                         <div className="title text-lg font-medium text-gray-700">{tName} {tId}</div>
-                        {tArtist.map((artist: any, index: any) => {
+                        {Array.isArray(tArtist) && tArtist.map((artist: string, index: any) => {
                             return (
-                                <div key={index} className="artist text-xs text-gray-400 uppercase tracking-wide">-{artist} </div>
+                                <div key={index} className="artist text-xs text-gray-400 uppercase tracking-wide">-{artist}</div>
                             )
-                        })
+                        })}
 
-                        }
                         
                          <StarRating track_id={tId}></StarRating>
                         

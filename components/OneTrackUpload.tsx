@@ -8,6 +8,7 @@ interface TrackForm {
     track_artist: string[];
     track_album: string;
     track_release_year: number;
+    genre: string;
 }
 
 
@@ -20,6 +21,7 @@ const OneTrackUpload: React.FC = () => {
         track_artist: [''],
         track_album: '',
         track_release_year: 0,
+        genre: "",
     });
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {

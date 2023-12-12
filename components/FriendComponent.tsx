@@ -18,7 +18,7 @@ export const FriendComponent: React.FC<FriendComponentProps>  = ({name}) => {
           className="block h-24 w-24 rounded-full mx-auto sm:mx-0"
         />
       </div> */}
-      <div className="w-full flex flex-row justify-evenly items-center">
+      <div className="w-full flex lg:flex-row flex-col justify-evenly items-center">
         <div className="space-y-0.5 flex flex-col justify-center">
           <p className="text-lg text-black font-semibold">
             {name}
@@ -29,7 +29,7 @@ export const FriendComponent: React.FC<FriendComponentProps>  = ({name}) => {
         </div>
         <div>
         <button className="px-2  text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
-          Message
+          Unfriend
         </button>
         </div>
         

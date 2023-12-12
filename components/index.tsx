@@ -8,6 +8,9 @@ import { StarRating } from "./StarRating"
 import { FriendComponent } from "./FriendComponent"
 import TrackList from "./TrackList"
 import { ProfileStat } from "./ProfileStat"
+import FriendsReco from "./FriendsReco"
+import FriendsRecoAlt from "./FriendsRecoAlt"
+import AddFriend from "./AddFriend"
 export
 {
     Navbar,
@@ -20,7 +23,8 @@ export
     FriendComponent,
     TrackList,
     ProfileStat,
-    
-    
+    FriendsReco,
+    FriendsRecoAlt,
+    AddFriend
     
 }

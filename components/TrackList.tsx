@@ -2,15 +2,17 @@
 import { Musicard } from "@/components"
 
 const getTracksData = async () => {
-  const res = await fetch("http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_tracks", {cache: "no-store"})
-  return res.json()
+  const res = await fetch("http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_tracks", {cache: "no-store"});
+  return res.json();
+  
 }
 
 
 export default async function ListOfTheTracks(){
-  const tracks = await getTracksData()
+  const tracks = await getTracksData();
   return(
-    <div className="flex">
+    <div>
+<div className="flex">
         {tracks.map((track: any) => {
           return (
             <div className="" >
@@ -21,5 +23,9 @@ export default async function ListOfTheTracks(){
 
         }
       </div>
+      
+      
+    </div>
+    
   )
 }

@@ -22,7 +22,7 @@ export const StarRating = (track_id:any) => {
   const fetchData = async () => {
       const accessToken = localStorage.getItem('accessToken');
       const username = localStorage.getItem('username');
-      if (accessToken && username && track_id) {
+      if (accessToken && username && track_id.track_id) {
           try {
               const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_like?track_id=${track_id.track_id}`, {
                   method: 'POST',

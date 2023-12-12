@@ -3,38 +3,6 @@
 @tailwind utilities;
 
 
-.friends-icon {
-  width: 24px;
-  height: 24px;
-  position: relative;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin-right: 8px;
-}
-
-.friends-icon::before,
-.friends-icon::after {
-  content: '';
-  position: absolute;
-  background-color: #ccc;
-  border-radius: 50%;
-}
-
-.friends-icon::before {
-  width: 10px;
-  height: 10px;
-  top: 8px;
-  left: 4px;
-}
-
-.friends-icon::after {
-  width: 10px;
-  height: 10px;
-  top: 8px;
-  right: 4px;
-}
-
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

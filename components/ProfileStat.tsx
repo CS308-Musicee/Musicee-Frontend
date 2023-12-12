@@ -15,6 +15,12 @@ interface ProfileData {
     unliked_songs: string[];
   }
 
+  interface LikedData {
+    username: string;
+    liked_songs_past_6_months: string[];
+  
+  }
+
 
 export const ProfileStat = () => {
 
@@ -28,6 +34,12 @@ export const ProfileStat = () => {
             unliked_songs: [],
         }); 
 
+    const [likedData, setlikedData] = useState<LikedData>(
+        {
+            username: "",
+            liked_songs_past_6_months: [],
+        }); 
+    const [likedList, setLikedList] = useState<string[]>([]);
 
 
     const fetchData = async () => {
@@ -43,7 +55,6 @@ export const ProfileStat = () => {
                         'Content-Type': 'application/json',
                     },
                 });
-                console.log("respomnse : ");
                 if (response.ok) {
                     const data = await response.json();
                     console.log('User-specific data received:', data);
@@ -64,8 +75,77 @@ export const ProfileStat = () => {
         }
     }
 
+    const fethLikedSongs = async () => {
+        const accessToken = localStorage.getItem('accessToken');
+        const username = localStorage.getItem('username');
+        
+        if (accessToken && username) {
+            try {
+                const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/liked_songs_past_6_months/${username}`, {
+                    method: 'GET',
+                    headers: {
+
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    console.log('User-specific data received:', data);
+                    setlikedData(data);
+                    if (data) {
+                        const fetchedNames = data.liked_songs_past_6_months.map(async (element:string) => {
+                          try {
+                            const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_track_details?track_id=${element}`, {
+                              method: 'POST',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                            });
+                      
+                            if (!response.ok) {
+                              throw new Error('Network response was not ok');
+                            }
+                      
+                            const data = await response.json();
+                            return data.track_name; // Assuming 'track_name' is the property containing the name
+                          } catch (error) {
+                            console.error('Error fetching data:', error);
+                            return null; // Return null if there's an error
+                          }
+                        });
+                      
+                        // Wait for all promises to resolve using Promise.all
+                        const resolvedNames = await Promise.all(fetchedNames);
+                        const filteredNames = resolvedNames.filter(name => name !== null); // Filter out null values
+                      
+                        // Now, 'filteredNames' contains the list of fetched names
+                        console.log('Filtered names:', filteredNames);
+                      
+                        // Set the state variable with the list of names
+                        setLikedList(filteredNames);
+                      }
+                      
+                      
+            } else {
+                    console.error('Failed to fetch user-specific data:', response.statusText);
+                    // Handle error scenarios
+                }
+            } catch (error) {
+                console.error('Fetch user-specific data error:', error);
+                // Handle fetch error
+            }
+        } else {
+            console.error('Access token or username not found');
+            // Handle scenario where tokens or username are missing
+
+        }
+    }
+    
+
     useEffect(() => {
         fetchData();
+        fethLikedSongs();
     }, []); // Empty dependency array to mimic componentDidMount behavior
 
 
@@ -112,6 +192,24 @@ export const ProfileStat = () => {
 
                     <div className="mt-2 text-sm text-gray-400">Downloads</div>
                 </a>
+            </div>
+            <div className='flex flex-col items-center'>
+                <div className='border-b-2 border-gray-900'>
+                Liked Tracks
+                </div>
+                
+                <div className='text-xl'>
+                    {likedList.map((song: any) => {
+                        return (
+                            <div className="" >
+                                {song}
+                            </div>
+                        )
+                    })
+
+                    }
+                </div>
+                
             </div>
 
         </div>
