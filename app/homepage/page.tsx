@@ -8,7 +8,7 @@ const page = () => {
 
   
   return (
-    <div className=' w-full min-h-screen bg-pink-200'>
+    <div className=' w-full h-full bg-pink-200'>
       <Navbar />
       <div className=' '>
       

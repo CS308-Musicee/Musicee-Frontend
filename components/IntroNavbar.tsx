@@ -14,11 +14,7 @@ const IntroNavbar = () => {
                         <Link href="/">Home</Link>
                         
                     </button>
-                    <button className="text-lg text-slate-700 font-semibold ">
-
-                        <Link href="/">Empty</Link>
-                        
-                    </button>
+                    
                     <button className="text-lg  text-slate-700 font-semibold ">
                         <Link href="/aboutPage">About</Link>
                         

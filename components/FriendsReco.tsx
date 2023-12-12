@@ -35,7 +35,7 @@ export default function ListOfTheTracks() {
   return (
     <div>
       <div className="flex">
-        {tracks.map((track, index) => (
+        {tracks &&tracks.length > 0 &&  tracks.map((track, index) => (
           <div key={index} className="">
             
             <FriendsRecoAlt

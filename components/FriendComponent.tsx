@@ -18,7 +18,7 @@ export const FriendComponent: React.FC<FriendComponentProps>  = ({name}) => {
           className="block h-24 w-24 rounded-full mx-auto sm:mx-0"
         />
       </div> */}
-      <div className="w-full flex flex-row justify-evenly items-center">
+      <div className="w-full flex lg:flex-row flex-col justify-evenly items-center">
         <div className="space-y-0.5 flex flex-col justify-center">
           <p className="text-lg text-black font-semibold">
             {name}

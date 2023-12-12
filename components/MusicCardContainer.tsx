@@ -18,9 +18,9 @@ export function MusicCardContainer({ title }: any) {
       </div>
       <div className='pt-64 text-4xl '>Recommendations from Your Friends</div>
       <div className='p-4 w-full mt-10'>
-        <div className='absolute  scroll-smooth overflow-scroll z-10 flex justify-between items-center h-108 w-4/5 pr-6'>
+        <div className='absolute  scroll-smooth overflow-scroll z-10 flex justify-between items-center h-108 w-4/5 pr-6 bg-pink-200'>
           <FriendsReco></FriendsReco>
-
+          
         </div>
       </div>
     </div>
