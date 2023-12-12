@@ -10,6 +10,7 @@ import TrackList from "./TrackList"
 import { ProfileStat } from "./ProfileStat"
 import FriendsReco from "./FriendsReco"
 import FriendsRecoAlt from "./FriendsRecoAlt"
+import AddFriend from "./AddFriend"
 export
 {
     Navbar,
@@ -24,6 +25,6 @@ export
     ProfileStat,
     FriendsReco,
     FriendsRecoAlt,
-    
+    AddFriend
     
 }

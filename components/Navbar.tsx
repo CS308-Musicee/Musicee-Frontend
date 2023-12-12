@@ -15,13 +15,14 @@ interface UserData {
 
 const navbar = () => {
 
-
+  const [user, setuser] = useState<string>();
   const [userData, setUserData] = useState<UserData | null>(null);
   const fetchData = async () => {
     const accessToken = localStorage.getItem('accessToken');
     const username = localStorage.getItem('username');
-
+    
     if (accessToken && username) {
+      setuser(username);
       try {
         const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/get_user_details/${username}`, {
           method: 'GET',
@@ -68,13 +69,17 @@ const navbar = () => {
             <Link href="/homepage">Home</Link>
 
           </button>
+          <button className="text-lg  text-slate-700 font-semibold ">
+            <Link href="/addFriendPage">Add Friend</Link>
+
+          </button>
           <button className="text-lg text-slate-700 font-semibold ">
 
             <Link href="/addTrackPage">Add Track</Link>
 
           </button>
           <button className="text-lg  text-slate-700 font-semibold ">
-            <Link href="/userPages/ProfilePage">Profile</Link>
+            <Link href="/userPages/ProfilePage">{user}</Link>
 
           </button>
           <button className="h-8 w-24 bg-slate-700 text-white font-semibold rounded-md shadow-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
