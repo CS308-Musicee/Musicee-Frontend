@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react';
 import { FriendsRecoAlt } from "@/components";
 
-const getTracksData = async () => {
+const getTracksData = async (inputLink: any) => {
+  const link = String(inputLink);
   const username = localStorage.getItem("username");
-  const res = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/tracks/recommend_friend_track?username=${username}`, {
+  const res = await fetch(link+ `${username}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -16,14 +17,16 @@ const getTracksData = async () => {
   return res.json();
 };
 
-export default function ListOfTheTracks() {
+export default function ListOfTheTracks({ inputMainLink }: { inputMainLink: string }) {
+  const link = String(inputMainLink);
   const [tracks, setTracks] = useState([]);
-
+  const [likedTracks, setLikedTracks] = useState([]);
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await getTracksData();
+        const data = await getTracksData(inputMainLink);
         setTracks(data);
+
       } catch (error) {
         console.error("Error fetching tracks:", error);
       }
@@ -44,6 +47,8 @@ export default function ListOfTheTracks() {
           </div>
         ))}
       </div>
+
+      
     </div>
   );
 }

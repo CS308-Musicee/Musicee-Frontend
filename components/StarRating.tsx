@@ -22,6 +22,7 @@ export const StarRating = (track_id:any) => {
   const fetchData = async () => {
       const accessToken = localStorage.getItem('accessToken');
       const username = localStorage.getItem('username');
+      console.log("track_id ye bakıyom:     " +track_id.track_id);
       if (accessToken && username && track_id.track_id) {
           try {
               const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_like?track_id=${track_id.track_id}`, {
@@ -44,7 +45,17 @@ export const StarRating = (track_id:any) => {
               // Handle fetch error
           }
       } else {
-          console.error('Access token or username not found');
+            if (!accessToken) {
+                console.error('Access token not found');
+
+            }
+            else if (!username) {
+                console.error('Access username not found');
+            }
+            else 
+            {
+                console.error('Access track_id not found');
+            }
           // Handle scenario where tokens or username are missing
 
       }

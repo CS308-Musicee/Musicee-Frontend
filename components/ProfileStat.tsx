@@ -81,20 +81,20 @@ export const ProfileStat = () => {
         
         if (accessToken && username) {
             try {
-                const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/liked_songs_past_6_months/${username}`, {
+                const responseGET = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/liked_songs_past_6_months/${username}`, {
                     method: 'GET',
                     headers: {
 
                         'Content-Type': 'application/json',
                     },
                 });
-                if (response.ok) {
-                    const data = await response.json();
+                if (responseGET.ok) {
+                    const data = await responseGET.json();
                     
                     console.log('User-specific data received:', data);
                     setlikedData(data);
                     if (data) {
-                        const fetchedNames = data.liked_songs_past_6_months.map(async (element:string) => {
+                        const fetchedNames = data.liked_songs_past_6_months.map(async (element:any) => {
                           try {
                             const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_track_details?track_id=${element}`, {
                               method: 'POST',
@@ -107,8 +107,8 @@ export const ProfileStat = () => {
                               throw new Error('Network response was not ok');
                             }
                       
-                            const data = await response.json();
-                            return data.track_name; // Assuming 'track_name' is the property containing the name
+                            const responseData  = await response.json();
+                            return responseData; // Assuming 'track_name' is the property containing the name
                           } catch (error) {
                             console.error('Error fetching data:', error);
                             return null; // Return null if there's an error
@@ -128,7 +128,7 @@ export const ProfileStat = () => {
                       
                       
             } else {
-                    console.error('Failed to fetch user-specific data:', response.statusText);
+                    console.error('Failed to fetch user-specific data:', responseGET.statusText);
                     // Handle error scenarios
                 }
             } catch (error) {
@@ -152,7 +152,7 @@ export const ProfileStat = () => {
 
     return (
         <div className='flex flex-col items-center space-y-4'>
-            <div className="">
+            <div className=" mt-28">
                 <Image src={Tom} alt="Music Image" className=" z-10  h-72 w-72" />
 
             </div>
@@ -193,24 +193,27 @@ export const ProfileStat = () => {
                     <div className="mt-2 text-sm text-gray-400">Downloads</div>
                 </a>
             </div>
-            <div className='flex flex-col items-center'>
-                <div className='border-b-2 border-gray-900'>
-                Liked Tracks
-                </div>
-                
-                <div className='text-xl'>
-                    {likedList.map((song: any) => {
-                        return (
-                            <div className="" >
-                                {song}
-                            </div>
-                        )
-                    })
 
-                    }
-                </div>
-                
-            </div>
+            <div className=' text-5xl p-12 bg-red-200'>Tracks You Liked in Past 6 Months</div>
+
+            <table className="table-fixed border-collapse border border-gray-300">
+                <thead>
+                    <tr className='bg-gray-200'>
+                        <th className="p-3 border border-gray-300">Song</th>
+                        <th className="p-3 border border-gray-300">Artist</th>
+                        <th className="p-3 border border-gray-300">Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {likedList.map((song: any, index: number) => (
+                        <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
+                            <td className="p-3 border border-gray-300">{song.track_name}</td>
+                            <td className="p-3 border border-gray-300">{song.track_artist}</td>
+                            <td className="p-3 border border-gray-300">{song.track_release_year}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
 
         </div>
 

@@ -6,26 +6,27 @@ import { Navbar, FriendsList, Inputbox, Musicard, MusicCardContainer } from '@/c
 
 const page = () => {
 
-  
+
   return (
-    <div className=' w-full h-full bg-pink-200'>
+    <div className='min-h-screen bg-pink-200 flex'>
+      <div className="w-1/6">
       <Navbar />
-      <div className=' '>
-      
-        <FriendsList />
       </div>
+      <div className='w-4/6 flex flex-col min-h-full p-6'>
+        <Inputbox name="Search for a Track/Album/Artist" />
+        <div className='flex flex-col space-y-6 flex-grow'>
+          <MusicCardContainer title="All Tracks" />
+        </div>
+      </div>
+      <div className="w-1/6">
+      <FriendsList />
+      </div>
+      
+      
 
 
-      <div className='w-5/6 flex flex-col h-full bg-pink-200 p-6'>
-      <Inputbox name="Search for a Track/Album/Artist"></Inputbox>
-      <div className='space-y-96'>
-      <MusicCardContainer title="All Tracks" ></MusicCardContainer>
-      </div>
-      
-      {/* <MusicCardContainer title="Top 10 in Australia"></MusicCardContainer>
-      <MusicCardContainer title="Top 10 in Turkey"></MusicCardContainer> */}
-      </div>
     </div>
+
 
 
 

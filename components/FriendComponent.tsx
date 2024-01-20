@@ -8,7 +8,7 @@ interface FriendComponentProps {
 
 export const FriendComponent: React.FC<FriendComponentProps>  = ({name}) => {
     return (
-        <div className="m-2 px-1 max-w-sm bg-white rounded-xl shadow-lg space-y-2 py-1 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+        <div className="m-2 px-1 max-w-sm bg-pink-300 rounded-xl shadow-lg space-y-2 py-1 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
       {/* <div className="flex-shrink-0">
         <Image
           src={Troye}
@@ -18,8 +18,8 @@ export const FriendComponent: React.FC<FriendComponentProps>  = ({name}) => {
           className="block h-24 w-24 rounded-full mx-auto sm:mx-0"
         />
       </div> */}
-      <div className="w-full flex lg:flex-row flex-col justify-evenly items-center">
-        <div className="space-y-0.5 flex flex-col justify-center">
+      <div className="w-full  flex lg:flex-row overflow-hidden flex-col justify-evenly items-center">
+        <div className="space-y-0.5 flex flex-col justify-center overflow-hidden">
           <p className="text-lg text-black font-semibold">
             {name}
           </p>

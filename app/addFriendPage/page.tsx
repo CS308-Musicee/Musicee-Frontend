@@ -2,21 +2,25 @@
 
 import Navbar from '@/components/Navbar';
 import React from 'react';
-import { AddFriend } from '@/components';
+import { AddFriend, FriendsList } from '@/components';
 const Home = () => {
   return (
-    <div>
-      <div>
-        <Navbar></Navbar>
+    <div className='min-h-screen bg-pink-200 flex'>
+      <div className="w-1/5">
+      <Navbar />
       </div>
-      <div className='bg-pink-200 h-screen'>
-        <div className='flex flex-row w-full justify-evenly items-start pt-28'>
-        <AddFriend></AddFriend>
+      <div className='w-4/6'>
+          <AddFriend />
         </div>
+      <div className="w-1/5">
+      <FriendsList />
       </div>
       
+      
+
 
     </div>
+
   );
 };
 

@@ -58,31 +58,31 @@ const navbar = () => {
 
 
   return (
-    <header className='w-full relative z-0 bg-pink-400'>
-      <nav className='w-full h-16 flex justify-between pl-[5vw] pr-6 items-center gap-x-4 '>
-        <div className='text-white text-3xl'>
+    <header className='min-h-screen w-1/6 fixed z-0 bg-pink-400'>
+      <nav className='w-full h-16 flex flex-col justify-between   gap-x-4 '>
+        <div className='text-white text-3xl text-center p-4'>
           Musicee
         </div>
 
-        <div className='flex gap-x-4 sm:gap-x-6 mr-10'>
-          <button className="text-lg  text-slate-700 font-semibold ">
+        <div className=' flex flex-col gap-y-4 sm:gap-y-6 items-start m-2  '>
+          <button className="w-full p-4  text-lg  text-slate-700 hover:bg-pink-300 hover:rounded font-semibold ">
             <Link href="/homepage">Home</Link>
 
           </button>
-          <button className="text-lg  text-slate-700 font-semibold ">
+          <button className="w-full p-4 text-lg  text-slate-700 hover:bg-pink-300 hover:rounded font-semibold ">
             <Link href="/addFriendPage">Add Friend</Link>
 
           </button>
-          <button className="text-lg text-slate-700 font-semibold ">
+          <button className="w-full p-4 text-lg text-slate-700 hover:bg-pink-300 hover:rounded font-semibold ">
 
             <Link href="/addTrackPage">Add Track</Link>
 
           </button>
-          <button className="text-lg  text-slate-700 font-semibold ">
+          <button className="w-full p-4 text-lg  text-slate-700 hover:bg-pink-300 hover:rounded font-semibold ">
             <Link href="/userPages/ProfilePage">{user}</Link>
 
           </button>
-          <button className="h-8 w-24 bg-slate-700 text-white font-semibold rounded-md shadow-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+          <button className="w-full p-4 bg-slate-700 text-white font-semibold rounded-md shadow-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
             <Link href="/">Sign Out</Link>
 
           </button>

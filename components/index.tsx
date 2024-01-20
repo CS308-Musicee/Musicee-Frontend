@@ -11,6 +11,7 @@ import { ProfileStat } from "./ProfileStat"
 import FriendsReco from "./FriendsReco"
 import FriendsRecoAlt from "./FriendsRecoAlt"
 import AddFriend from "./AddFriend"
+import CommentButton from "./CommentButton"
 export
 {
     Navbar,
@@ -25,6 +26,7 @@ export
     ProfileStat,
     FriendsReco,
     FriendsRecoAlt,
-    AddFriend
+    AddFriend,
+    CommentButton
     
 }
