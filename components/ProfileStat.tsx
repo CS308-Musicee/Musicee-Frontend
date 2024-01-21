@@ -196,24 +196,26 @@ export const ProfileStat = () => {
 
             <div className=' text-5xl p-12 bg-red-200'>Tracks You Liked in Past 6 Months</div>
 
-            <table className="table-fixed border-collapse border border-gray-300">
-                <thead>
-                    <tr className='bg-gray-200'>
-                        <th className="p-3 border border-gray-300">Song</th>
-                        <th className="p-3 border border-gray-300">Artist</th>
-                        <th className="p-3 border border-gray-300">Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {likedList.map((song: any, index: number) => (
-                        <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
-                            <td className="p-3 border border-gray-300">{song.track_name}</td>
-                            <td className="p-3 border border-gray-300">{song.track_artist}</td>
-                            <td className="p-3 border border-gray-300">{song.track_release_year}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <table className="table-fixed border-collapse border border-gray-300 text-base">
+  <thead>
+    <tr className='bg-gray-200'>
+      <th className="p-4 border border-gray-300">Song</th>
+      <th className="p-4 border border-gray-300">Artist</th>
+      <th className="p-4 border border-gray-300">Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    {likedList.map((song: any, index: number) => (
+      <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
+        <td className="p-4 border border-gray-300">{song.track_name}</td>
+        <td className="p-4 border border-gray-300">{song.track_artist}</td>
+        <td className="p-4 border border-gray-300">{song.track_release_year}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+
 
         </div>
 

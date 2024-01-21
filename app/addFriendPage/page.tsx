@@ -5,7 +5,7 @@ import React from 'react';
 import { AddFriend, FriendsList } from '@/components';
 const Home = () => {
   return (
-    <div className='min-h-screen bg-pink-200 flex'>
+    <div className='min-h-screen bg-f2d3d3 flex'>
       <div className="w-1/5">
       <Navbar />
       </div>

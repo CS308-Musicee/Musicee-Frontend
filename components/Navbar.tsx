@@ -58,10 +58,11 @@ const navbar = () => {
 
 
   return (
-    <header className='min-h-screen w-1/6 fixed z-0 bg-pink-400'>
-      <nav className='w-full h-16 flex flex-col justify-between   gap-x-4 '>
-        <div className='text-white text-3xl text-center p-4'>
-          Musicee
+    <header className='min-h-screen w-1/6 fixed z-0 bg-E79D9D'>
+      <nav className='w-full h-16 flex flex-col justify-between gap-x-4'>
+        <div className='text-5A5A54 text-3xl text-center p-4 flex items-center justify-center'>
+          <img src="/triangle.png" alt="Musicee Logo" className="mr-2 h-12 max-w-auto" />
+          <span>Musicee</span>
         </div>
 
         <div className=' flex flex-col gap-y-4 sm:gap-y-6 items-start m-2  '>

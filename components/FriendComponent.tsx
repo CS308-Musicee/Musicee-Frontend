@@ -7,8 +7,11 @@ interface FriendComponentProps {
 }
 
 export const FriendComponent: React.FC<FriendComponentProps>  = ({name}) => {
-    return (
-        <div className="m-2 px-1 max-w-sm bg-pink-300 rounded-xl shadow-lg space-y-2 py-1 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+  return (
+    <div
+      className="m-2 px-1 max-w-sm rounded-xl shadow-lg space-y-2 py-1 sm:flex sm:items-center sm:space-y-0 sm:space-x-6"
+      style={{ backgroundColor: '#f2d3d3' }}
+    >
       {/* <div className="flex-shrink-0">
         <Image
           src={Troye}
@@ -28,12 +31,12 @@ export const FriendComponent: React.FC<FriendComponentProps>  = ({name}) => {
           </p>
         </div>
         <div>
-        <button className="px-2  text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
-          Unfriend
-        </button>
+          <button className="px-2  text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
+            Unfriend
+          </button>
         </div>
-        
       </div>
     </div>
-    )
+  );
+  
 }

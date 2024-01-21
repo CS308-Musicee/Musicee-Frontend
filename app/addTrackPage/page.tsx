@@ -10,7 +10,7 @@ const Home = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <div className='bg-pink-200 h-screen'>
+      <div className='bg-f2d3d3 h-screen'>
         <div className='flex flex-row w-full justify-evenly items-start pt-28'>
           <div>
             <OneTrackUpload></OneTrackUpload>

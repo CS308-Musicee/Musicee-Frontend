@@ -13,7 +13,7 @@ const page = () => {
 
       </div>
 
-      <div className='w-4/6 min-h-screen bg-pink-200'>
+      <div className='w-4/6 min-h-screen bg-f2d3d3'>
         <div className='min-h-screen flex justify-center items-center text-4xl '>
           <ProfileStat></ProfileStat>
         </div>

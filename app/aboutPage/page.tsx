@@ -6,8 +6,24 @@ const page = () => {
   return (
     <div className='w-full min-h-screen'>
       <IntroNavbar />
+
+      {/* New div with background color */}
+      <div
+        className='w-full min-h-screen flex items-center justify-center'
+        style={{
+          backgroundImage: 'url("/background3.png")', 
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0, 
+          animation: 'fadeIn 2s forwards', 
+        }}
+      >
+        <div className='text-white text-5xl font-bold text-center' style={{ color: '#ffffff' }}>
+          About Us
+        </div>
+      </div>
       
-      <div className='w-full min-h-screen bg-pink-200 text-left'>
+      <div className='w-full min-h-screen bg-pink-200 text-left'style={{ backgroundColor: '#f2d3d3' }}>
         <div className='min-h-screen flex flex-col justify-center items-center text-center mx-auto'>
           <h1 className='text-6xl font-bold mb-10' style={{ color: 'black' }}>
             Welcome to Musicee

@@ -8,8 +8,8 @@ const page = () => {
 
 
   return (
-    <div className='min-h-screen bg-pink-200 flex'>
-      <div className="w-1/6">
+    <div className='min-h-screen bg-f2d3d3 flex'>
+      <div className="w-1/6" style={{ backgroundColor: '#E79D9D' }}>
       <Navbar />
       </div>
       <div className='w-4/6 flex flex-col min-h-full p-6'>

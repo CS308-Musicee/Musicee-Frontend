@@ -16,6 +16,7 @@ const AddFriend: React.FC = () => {
   const [addableFriends, setAddableFriends] = useState<User[]>([]);
   const [allUsers, setAllUsers] = useState<User[]>([]);
   const [searchInput, setSearchInput] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   useEffect(() => {
     fetchData();
@@ -26,33 +27,26 @@ const AddFriend: React.FC = () => {
     const userNamee = localStorage.getItem('username');
 
     if (accessToken && userNamee) {
-        try {
-            const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/all`, {
-                method: 'GET',
-                headers: {
-
-                    'Content-Type': 'application/json',
-                },
-            });
-            if (response.ok) {
-                const data = await response.json();
-                //console.log('User-specific data received:', data);
-                setAllUsers(data);
-                // Process the data or update state as needed
-            } else {
-                console.error('Failed to fetch user-specific data:', response.statusText);
-                // Handle error scenarios
-            }
-        } catch (error) {
-            console.error('Fetch user-specific data error:', error);
-            // Handle fetch error
+      try {
+        const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/all`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setAllUsers(data);
+        } else {
+          console.error('Failed to fetch user-specific data:', response.statusText);
         }
+      } catch (error) {
+        console.error('Fetch user-specific data error:', error);
+      }
     } else {
-        console.error('Access token or username not found');
-        // Handle scenario where tokens or username are missing
-
+      console.error('Access token or username not found');
     }
-}
+  };
 
   const getAddableFriends = () => {
     const username = localStorage.getItem('username');
@@ -63,7 +57,6 @@ const AddFriend: React.FC = () => {
 
     const currentUserFriends = currentUser.friends;
 
-    // Filter based on the search input only when it's not empty
     const filteredFriends = searchInput
       ? allUsers.filter((user) => {
           return (
@@ -78,15 +71,13 @@ const AddFriend: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log('useEffect is triggered due to searchInput change');
-
     const friendsToAdd = getAddableFriends();
     setAddableFriends(friendsToAdd);
   }, [allUsers, searchInput]);
 
   const handleAddFriend = async (e: string) => {
     const userNameMain = localStorage.getItem('username');
-    
+
     try {
       const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/add_friend/${userNameMain}/${e}`, {
         method: 'PUT',
@@ -97,16 +88,15 @@ const AddFriend: React.FC = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-
-        // Store tokens in localStorage or a secure storage solution
-        
+        setSuccessMessage('Friend added successfully!');
+        // Clear success message after a certain duration (e.g., 3 seconds)
+        setTimeout(() => setSuccessMessage(null), 3000);
       } else {
         const errorData = await response.json();
-
         // Handle specific error messages if needed
-    
       }
     } catch (error) {
+      // Handle fetch error
     }
   };
 
@@ -119,10 +109,10 @@ const AddFriend: React.FC = () => {
         <Inputbox
           name='Search for a user'
           value={searchInput}
-          onChange={(e:any) => console.log("changed", e.target.value)}
+          onChange={(e: any) => setSearchInput(e.target.value)}
         />
       </div>
-      <div className=' bg-pink-400 relative shadow-xl m-10 overflow-scroll'>
+      <div className=' bg-E79D9D relative shadow-xl m-10 overflow-scroll'>
         <div className='flex flex-col m-4 space-y-2 '>
           {addableFriends &&
             addableFriends.length > 0 &&
@@ -138,6 +128,11 @@ const AddFriend: React.FC = () => {
             ))}
         </div>
       </div>
+      {successMessage && (
+        <div className='text-green-600 text-center mt-4'>
+          {successMessage}
+        </div>
+      )}
     </div>
   );
 };

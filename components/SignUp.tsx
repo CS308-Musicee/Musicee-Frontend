@@ -125,6 +125,7 @@ const SignUpForm: React.FC = () => {
         <button
           className="bg-pink-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
+          style={{ backgroundColor: '#E79D9D' , color: '#5A5A54' }}
         >
           Sign Up
         </button>

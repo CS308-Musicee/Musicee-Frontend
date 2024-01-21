@@ -17,6 +17,42 @@
   }
 }
 
+.bg-f2d3d3 {
+  background-color: #f2d3d3;
+}
+
+.bg-E79D9D {
+  background-color: #E79D9D;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.pop-up-animation {
+  transition: transform 0.3s ease-in-out;
+}
+
+.pop-up-animation:hover {
+  transform: scale(1.1);
+}
+
+
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -26,4 +62,3 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
