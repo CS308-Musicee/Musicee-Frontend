@@ -58,7 +58,7 @@ const navbar = () => {
 
 
   return (
-    <header className='w-full relative z-0 bg-pink-400'>
+    <header style={{ width: '100%', position: 'relative', zIndex: 0, backgroundColor: '#E79D9D' }}>
       <nav className='w-full h-16 flex justify-between pl-[5vw] pr-6 items-center gap-x-4 '>
         <div className='text-white text-3xl'>
           Musicee

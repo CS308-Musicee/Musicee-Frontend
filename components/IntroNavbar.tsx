@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const IntroNavbar = () => {
     return (
-        <header className='min-w-full relative z-10 bg-pink-400'>
+        <header className='min-w-full relative z-10 bg-[#E79D9D]'>
             <nav className='w-full h-16 flex justify-between pl-[5vw] pr-6 items-center gap-x-4 '>
                 <div className='text-white text-3xl'>
                     Musicee

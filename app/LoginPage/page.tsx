@@ -6,7 +6,7 @@ import Login from '@/components/Login'; // Import the SignUpForm component
 
 const LoginPage: React.FC = () => {
   const containerStyle = {
-    backgroundColor: '#fbcfe8',
+    backgroundColor: '#ede1e1',
   };
 
   return (
