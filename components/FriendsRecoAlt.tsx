@@ -11,6 +11,7 @@ interface TrackObject {
   genre: string;
   track_release_year: number;
   like_list: string[];
+  comment: string[];
 }
 
 
@@ -48,6 +49,7 @@ export default function ListOfTheTracks({track_id}:any) {
       genre: "",
       track_release_year: 0,
       like_list: [],
+      comment: []
     }
   );
 
@@ -82,6 +84,8 @@ export default function ListOfTheTracks({track_id}:any) {
             tArtist={tracks.track_artist}
             tId={tracks.track_id}
             tRY={tracks.track_release_year}
+            tComment = {tracks.comment}
+
           />
         )}
       

@@ -8,11 +8,12 @@ import { StarRating, CommentButton } from '.';
 
   
 
-const Musicard = ({ tName, tAlbum, tArtist, tId, tRY }: any) => {
+const Musicard = ({ tName, tAlbum, tArtist, tId, tRY, tComment }: any) => {
     const [liked, setLiked] = useState(false);
     //console.log("musicard TID: " + tId);
-
-
+    useEffect(() => {
+        console.log("Comments for track ID:", tId, tComment);
+      }, [tId, tComment]);
     //posting track Id and username to like the track
     const handleLike = async () => {
         setLiked(!liked);
@@ -28,7 +29,6 @@ const Musicard = ({ tName, tAlbum, tArtist, tId, tRY }: any) => {
                             'Content-Type': 'application/json',
                         },
                     });
-                    console.log("response : ");
                     if (response.ok) {
                         const data = await response.json();
                         console.log('User-specific data received:', data);
@@ -80,19 +80,17 @@ const Musicard = ({ tName, tAlbum, tArtist, tId, tRY }: any) => {
                     <div className="absolute h-12 w-full top-96 bg-gradient-to-b from-transparent to-pink-600"></div>
                 </div>
                 {/* Other components */}
-                <div className='relative h-96 flex flex-col justify-end items-center pb-4 z-10'>
+                <div className='static h-96 flex flex-col justify-end items-center pb-4 z-10'>
                     <div className="flex-row">
-                        <div className="title text-lg font-medium text-gray-700">{tName} {tId}</div>
+                        <div className=" text-lg font-medium text-gray-700 z-10">{tName} {tId}</div>
                         {Array.isArray(tArtist) && tArtist.map((artist: string, index: any) => {
                             return (
-                                <div key={index} className="artist text-xs text-gray-400 uppercase tracking-wide">-{artist}</div>
+                                <div key={index} className="text-xs text-gray-400 uppercase tracking-wide">-{artist}
+                                </div>
+
                             )
                         })}
 
-                        
-                         
-                       
-                        
 
                     </div>
                     <div className='flex flex-row space-x-2'>
@@ -104,7 +102,7 @@ const Musicard = ({ tName, tAlbum, tArtist, tId, tRY }: any) => {
                             <span className="sr-only">Like Icon</span>
                             {liked ? 'Unlike' : 'Like'}
                         </button>
-                        <CommentButton></CommentButton>
+                        <CommentButton comments={tComment} tid={tId} ></CommentButton>
                     </div>
                 </div>
 
