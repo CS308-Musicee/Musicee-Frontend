@@ -42,7 +42,7 @@ const FileUploadForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className='text-4xl mb-8'>Upload JSON File</div>
+      <div className='text-4xl mb-8'style={{ color: '#5A5A54' }}>Upload JSON File</div>
       <div className='flex flex-col space-y-8 items-center'>
       <input type="file" onChange={handleFileChange} />
       <button type="submit" className='bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-28'>Upload</button>

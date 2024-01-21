@@ -2,30 +2,36 @@ import React from 'react';
 import Image from 'next/image';
 import { IntroNavbar, FriendsList } from '@/components';
 import logoImage from "./logo.png"; // Import logo.png
-import backgroundImage from "./introback.jpg";
+import backgroundImage from "./background.png";
 
 const Page = () => {
+
   return (
     <div className='w-full min-h-screen'>
       <IntroNavbar />
 
-      {/* New div with background image */}
+      {/* New div with background color */}
       <div
         className='w-full min-h-screen flex items-center justify-center'
         style={{
-          backgroundImage: `url(${require("./introback.jpg")})`,
+          backgroundImage: 'url("/background2.png")', // Assuming background.png is in the public folder
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          transform: 'scale(0.8)', // Initially set scale to 0.8
+          animation: 'zoomIn 2s forwards', // 2s animation duration, forwards to keep the final style
         }}
       >
-        <div className='text-white text-5xl font-bold text-center'>
-          {/* Content for the new div, if needed */}
+        <div className='text-white text-5xl font-bold text-center' style={{ color: '#ffffff' }}>
           Welcome to Musicee
         </div>
       </div>
 
       {/* Main content */}
-      <div className='flex-1'>
+      <div className='flex-1'
+        style={{
+          backgroundColor: '#f2d3d3', // Set the background color here
+        }}
+      >
         <div className='h-screen flex flex-col justify-center items-center text-center'>
           <div className='rounded-full overflow-hidden mb-8'>
             <Image

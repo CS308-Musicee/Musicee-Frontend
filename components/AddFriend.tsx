@@ -128,7 +128,7 @@ const AddFriend = () => {
       };
 
     return (
-        <div className="max-h-screen w-3/6 bg-pink-400 relative right-0 shadow-xl">
+        <div className="max-h-screen w-3/6 bg-[#E79D9D] relative right-0 shadow-xl">
           <h1 className='w-full text-center text-2xl p-4 border-b-2 border-opacity-60 border-white'>
             Add Friends
           </h1>

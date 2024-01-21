@@ -9,7 +9,7 @@ const Home = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <div className='bg-pink-200 h-screen'>
+      <div style={{ backgroundColor: '#f2d3d3', height: '100vh' }}>
         <div className='flex flex-row w-full justify-evenly items-start pt-28'>
         <AddFriend></AddFriend>
         </div>

@@ -194,7 +194,7 @@ export const ProfileStat = () => {
                 </a>
             </div>
             <div className='flex flex-col items-center'>
-                <div className='border-b-2 border-gray-900'>
+                <div className='border-b-2 border-gray-900'style={{ color: '#5A5A54' }}>
                 Liked Tracks
                 </div>
                 

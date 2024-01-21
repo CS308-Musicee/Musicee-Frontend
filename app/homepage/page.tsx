@@ -6,9 +6,9 @@ import { Navbar, FriendsList, Inputbox, Musicard, MusicCardContainer } from '@/c
 
 const page = () => {
 
-  
+  const textColor = '#5A5A54';
   return (
-    <div className=' w-full h-full bg-pink-200'>
+    <div className='w-full h-full bg-f2d3d3'>
       <Navbar />
       <div className=' '>
       
@@ -16,10 +16,10 @@ const page = () => {
       </div>
 
 
-      <div className='w-5/6 flex flex-col h-full bg-pink-200 p-6'>
+      <div style={{ backgroundColor: '#f2d3d3', height: '100vh' }}>
       <Inputbox name="Search for a Track/Album/Artist"></Inputbox>
       <div className='space-y-96'>
-      <MusicCardContainer title="All Tracks" ></MusicCardContainer>
+      <MusicCardContainer title="All Tracks" textColor={textColor}></MusicCardContainer>
       </div>
       
       {/* <MusicCardContainer title="Top 10 in Australia"></MusicCardContainer>

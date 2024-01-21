@@ -60,25 +60,26 @@ const navbar = () => {
   return (
     <header style={{ width: '100%', position: 'relative', zIndex: 0, backgroundColor: '#E79D9D' }}>
       <nav className='w-full h-16 flex justify-between pl-[5vw] pr-6 items-center gap-x-4 '>
-        <div className='text-white text-3xl'>
+        <div className='text-[#5A5A54] text-3xl flex items-center'>
+          <img src="/triangle.png" alt="Musicee Logo" className="mr-2 h-12 max-w-auto"/>
           Musicee
         </div>
 
         <div className='flex gap-x-4 sm:gap-x-6 mr-10'>
-          <button className="text-lg  text-slate-700 font-semibold ">
+          <button className="text-lg  text-slate-700 font-semibold pop-up-animation">
             <Link href="/homepage">Home</Link>
 
           </button>
-          <button className="text-lg  text-slate-700 font-semibold ">
+          <button className="text-lg  text-slate-700 font-semibold pop-up-animation">
             <Link href="/addFriendPage">Add Friend</Link>
 
           </button>
-          <button className="text-lg text-slate-700 font-semibold ">
+          <button className="text-lg text-slate-700 font-semibold pop-up-animation">
 
             <Link href="/addTrackPage">Add Track</Link>
 
           </button>
-          <button className="text-lg  text-slate-700 font-semibold ">
+          <button className="text-lg  text-slate-700 font-semibold pop-up-animation">
             <Link href="/userPages/ProfilePage">{user}</Link>
 
           </button>

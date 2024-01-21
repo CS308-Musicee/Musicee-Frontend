@@ -47,8 +47,8 @@ const FriendsList = () => {
     //console.log(userData);
 
     return (
-        <div className="grow min-h-screen w-1/6 bg-slate-400 fixed right-0 shadow-xl " >
-            <h1 className='w-full text-center text-2xl p-4 border-b-2 border-opacity-60 border-white'>
+        <div className="grow min-h-screen w-1/6 bg-f2d3d3 fixed right-0 shadow-xl " >
+            <h1 className='w-full text-center text-2xl p-4 border-b-2 border-opacity-60 border-white'style={{ color: '#5A5A54' }}>
                 Friends
             </h1>
             <div>

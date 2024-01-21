@@ -8,7 +8,7 @@ const page = () => {
     <div className='w-full min-h-screen'>
       <Navbar/>
       <FriendsList/>
-      <div className='w-5/6 min-h-screen bg-pink-200'>
+      <div style={{ backgroundColor: '#f2d3d3', flex: 1, padding: '20px' }}>
       <div className='min-h-screen flex justify-center items-center text-4xl '>
       <ProfileStat></ProfileStat>
         </div>
