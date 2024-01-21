@@ -96,8 +96,8 @@ export const ProfileStat = () => {
                     if (data) {
                         const fetchedNames = data.liked_songs_past_6_months.map(async (element:any) => {
                           try {
-                            const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_track_details?track_id=${element}`, {
-                              method: 'POST',
+                            const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_track_details/${element}`, {
+                              method: 'GET',
                               headers: {
                                 'Content-Type': 'application/json',
                               },

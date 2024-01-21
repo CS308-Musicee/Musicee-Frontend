@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 
 
 
-const FileUploadForm: React.FC = () => {
+const FileUploadForm: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
   const [file, setFile] = useState<File | null>(null);
   const [Message, setMessage]= useState<string | null>(null);
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,14 +41,15 @@ const FileUploadForm: React.FC = () => {
         setMessage('Error uploading file');
       }
     }
+ 
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className='text-4xl mb-8'>Upload JSON File</div>
-      <div className='flex flex-col space-y-8 items-center'>
+      <div  data-testid="input-div" className='text-4xl mb-8'>Upload JSON File</div>
+      <div  className='flex flex-col space-y-8 items-center'>
       <input type="file" onChange={handleFileChange} />
-      <button type="submit" className='bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-28'>Upload</button>
+      <button data-testid="submit-button" type="submit" className='bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-28'>Upload</button>
       {Message && <div className="text-green-500">{Message}</div>}
       </div>
     </form>

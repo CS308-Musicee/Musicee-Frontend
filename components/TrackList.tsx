@@ -3,6 +3,12 @@ import { useEffect, useState, useRef } from 'react';
 import { Musicard } from '@/components';
 import { Console } from 'console';
 
+interface Comment {
+  comment_id: string;
+  comment: string;
+  username: string;
+  track_id: string;
+}
 
 interface Track {
   track_id: number;
@@ -10,6 +16,7 @@ interface Track {
   track_album: string;
   track_artist: string;
   track_release_year: number;
+  comment: Comment[];
   // Add other properties as per your API response
 }
 
@@ -21,6 +28,9 @@ export default function ListOfTheTracks() {
         const res = await fetch("http://musicee.us-west-2.elasticbeanstalk.com/tracks/get_tracks", { cache: "no-store" });
         const data = await res.json();
         setTracks(data);
+        console.log(data);
+
+       
       } catch (error) {
         console.error('Error fetching data:', error);
         setTracks([]);
@@ -47,9 +57,14 @@ export default function ListOfTheTracks() {
                 tArtist={track.track_artist}
                 tId={track.track_id}
                 tRY={track.track_release_year}
+                tComment={track.comment || []} 
               />
+             
             </div>
+            
           ))}
+
+            
         </div>
       </div>
       </div>
