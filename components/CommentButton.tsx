@@ -125,7 +125,7 @@ const CommentModal = ({ comments, tid }: any) => {
 
   return (
     <>
-      <button onClick={openModal} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <button data-testid="outComment" onClick={openModal} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Comment
       </button>
       {isOpen && (
@@ -135,18 +135,20 @@ const CommentModal = ({ comments, tid }: any) => {
       >
         <div onClick={stopPropagation} className="bg-white p-6 rounded shadow-lg z-51 max-w-screen-md h-3/4 overflow-y-auto">
           <h2 className="text-lg font-bold mb-4">Comment Section</h2>
+          <div className="comment-container space-x">{renderComments()}</div>
+
           <textarea
             name=""
             id=""
-            cols={30}
-            rows={10}
+            cols={15}
+            rows={5}
             className="border border-gray-300 rounded p-2 mb-4 w-full"
             placeholder="Write your comment here..."
             onChange={(e) => setCommentText(e.target.value)}
           ></textarea>
           {/* Render comments on the DOM */}
-          <div className="comment-container space-x">{renderComments()}</div>
           <button
+            data-testid="inComment"
             onClick={handleCommentSubmit}
             className="bg-red-500 hover:bg-red-700 text-white font-bold p-2 m-2 rounded"
           >

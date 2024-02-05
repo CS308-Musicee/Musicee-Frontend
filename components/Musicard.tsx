@@ -76,21 +76,22 @@ const Musicard = ({ tName, tAlbum, tArtist, tId, tRY, tComment }: any) => {
         <div className="flex p-4">
             <div className="music-card bg-white shadow-md rounded-md overflow-hidden relative w-72 ">
                 <div className="image relative z-0">
-                    <Image src={TroyeSiyan} alt="Music Image" className="absolute opacity-80 h-72 w-72" />
+                    <Image src={TroyeSiyan} alt="Music Image" className="absolute opacity-80 h-72 w-72 " />
                     <div className="absolute h-12 w-full top-96 bg-gradient-to-b from-transparent to-pink-600"></div>
                 </div>
                 {/* Other components */}
-                <div className='static h-96 flex flex-col justify-end items-center pb-4 z-10'>
+                <div className='static h-96 flex flex-col justify-end items-center pb-4'>
                     <div className="flex-row">
-                        <div className=" text-lg font-medium text-gray-700 z-10">{tName} {tId}</div>
+                        <div className=" text-lg text-center font-medium text-gray-700 ">{tName} </div>
+                        <div className='flex flex-row'>
                         {Array.isArray(tArtist) && tArtist.map((artist: string, index: any) => {
                             return (
-                                <div key={index} className="text-xs text-gray-400 uppercase tracking-wide">-{artist}
+                                <div key={index} className="text-xs text-gray-400 uppercase tracking-wide">  -{artist} 
                                 </div>
 
                             )
                         })}
-
+                        </div>
 
                     </div>
                     <div className='flex flex-row space-x-2'>

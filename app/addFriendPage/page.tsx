@@ -6,13 +6,13 @@ import { AddFriend, FriendsList } from '@/components';
 const Home = () => {
   return (
     <div className='min-h-screen bg-pink-200 flex'>
-      <div className="w-1/5">
+      <div className="w-1/6">
       <Navbar />
       </div>
       <div className='w-4/6'>
           <AddFriend />
         </div>
-      <div className="w-1/5">
+      <div className="w-1/6">
       <FriendsList />
       </div>
       

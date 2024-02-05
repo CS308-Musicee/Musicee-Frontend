@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-
+import { Header } from './Header';
 
 interface TrackForm {
     track_name: string;
@@ -85,9 +85,7 @@ const OneTrackUpload: React.FC = () => {
         <div>
         <form onSubmit={handleManualSubmit}>
           <div className="mb-4">
-            <div className='text-4xl mb-8'>
-                Add Track Manually
-            </div>
+          <Header title="Add Track Manually"></Header>
             <label htmlFor="track_name" className="block text-gray-700 text-sm font-bold mb-2">
               Track Name:
             </label>

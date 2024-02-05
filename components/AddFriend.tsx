@@ -1,145 +1,164 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import AnimatedHeading from './animations/AnimatedHeading';
 import { Inputbox } from '.';
-
 interface User {
-  username: string;
-  email: string;
-  password: string;
-  friends: string[];
-  liked_songs: string[];
-  liked_songs_date: string[];
-}
+    // Define your user properties here
+    username: string;
+    email: string;
+    password: string;
+    friends: string[];
+    liked_songs: string[];
+    liked_songs_date: string[];
 
-const AddFriend: React.FC = () => {
-  const [addableFriends, setAddableFriends] = useState<User[]>([]);
-  const [allUsers, setAllUsers] = useState<User[]>([]);
-  const [searchInput, setSearchInput] = useState<string>('');
+   
+    // Other user properties
+  }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const accessToken = localStorage.getItem('accessToken');
-    const userNamee = localStorage.getItem('username');
-
-    if (accessToken && userNamee) {
-        try {
-            const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/all`, {
-                method: 'GET',
-                headers: {
-
-                    'Content-Type': 'application/json',
-                },
-            });
-            if (response.ok) {
-                const data = await response.json();
-                //console.log('User-specific data received:', data);
-                setAllUsers(data);
-                // Process the data or update state as needed
-            } else {
-                console.error('Failed to fetch user-specific data:', response.statusText);
-                // Handle error scenarios
-            }
-        } catch (error) {
-            console.error('Fetch user-specific data error:', error);
-            // Handle fetch error
+const AddFriend = () => {
+    const [addableFriends, setAddableFriends] = useState<User[]>([]);
+    const [searchInput, setSearchInput] = useState<string>('');
+    const [allUsers, setallUsers] = useState<User[]>([
+        {
+            username: "",
+            email: "",
+            password: "",
+            friends: [],
+            liked_songs: [],
+            liked_songs_date: []
         }
-    } else {
-        console.error('Access token or username not found');
-        // Handle scenario where tokens or username are missing
+    ]);
 
+    useEffect(() => {
+        fetchData();
+      }, []);
+    const fetchData = async () => {
+        const accessToken = localStorage.getItem('accessToken');
+        const userNamee = localStorage.getItem('username');
+
+        if (accessToken && userNamee) {
+            try {
+                const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/all`, {
+                    method: 'GET',
+                    headers: {
+
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    //console.log('User-specific data received:', data);
+                    setallUsers(data);
+                    // Process the data or update state as needed
+                } else {
+                    console.error('Failed to fetch user-specific data:', response.statusText);
+                    // Handle error scenarios
+                }
+            } catch (error) {
+                console.error('Fetch user-specific data error:', error);
+                // Handle fetch error
+            }
+        } else {
+            console.error('Access token or username not found');
+            // Handle scenario where tokens or username are missing
+
+        }
     }
-}
 
-  const getAddableFriends = () => {
-    const username = localStorage.getItem('username');
-    if (!username || !allUsers.length) return [];
+// Empty dependency array to mimic componentDidMount behavior
 
-    const currentUser = allUsers.find((user) => user.username === username);
-    if (!currentUser) return [];
+    const getAddableFriends = async () => {
+        const Usernamee = localStorage.getItem('username');
+        if (!Usernamee || !allUsers.length) return [];
+        console.log("All Users: ", allUsers);
+        // Find the current user's friends
+        const currentUser = allUsers.find(user => user.username === Usernamee);
+        if (!currentUser) {
+            console.log("Current user not found");
+            return [];
+          }
+        const currentUserFriends = currentUser.friends;
+        const addableFriends = allUsers.filter(user => {
+            // Check if the user is not in the currentUserFriends list OR if it's not the current user
+            return !currentUserFriends.includes(user.username) && user.username !== Usernamee;
+          });        
 
-    const currentUserFriends = currentUser.friends;
-
-    // Filter based on the search input only when it's not empty
-    const filteredFriends = searchInput
-      ? allUsers.filter((user) => {
-          return (
-            !currentUserFriends.includes(user.username) &&
-            user.username !== username &&
-            user.username.toLowerCase().includes(searchInput.toLowerCase())
-          );
-        })
-      : allUsers;
-
-    return filteredFriends;
-  };
-
-  useEffect(() => {
-    console.log('useEffect is triggered due to searchInput change');
-
-    const friendsToAdd = getAddableFriends();
-    setAddableFriends(friendsToAdd);
-  }, [allUsers, searchInput]);
-
-  const handleAddFriend = async (e: string) => {
-    const userNameMain = localStorage.getItem('username');
+        // Filter out the addable friends
+        console.log("Addable friends:", addableFriends);
     
-    try {
-      const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/add_friend/${userNameMain}/${e}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+        return addableFriends;
+      };
+      useEffect(() => {
+        const fetchAddableFriends = async () => {
+          const friendsToAdd = await getAddableFriends();
+          setAddableFriends(friendsToAdd);
+          console.log("friendsToAdd " + friendsToAdd);
+        };
+    
+        fetchAddableFriends();
+      }, [allUsers]);
 
-      if (response.ok) {
-        const responseData = await response.json();
+    //console.log(userData);
 
-        // Store tokens in localStorage or a secure storage solution
+
+    const handleAddFriend = async (e: string) => {
+        const userNameMain = localStorage.getItem('username');
         
-      } else {
-        const errorData = await response.json();
-
-        // Handle specific error messages if needed
+        try {
+          const response = await fetch(`http://musicee.us-west-2.elasticbeanstalk.com/users/add_friend/${userNameMain}/${e}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
     
-      }
-    } catch (error) {
-    }
-  };
+          if (response.ok) {
+            const responseData = await response.json();
+    
+            // Store tokens in localStorage or a secure storage solution
+            
+          } else {
+            const errorData = await response.json();
+    
+            // Handle specific error messages if needed
+        
+          }
+        } catch (error) {
+        }
+      };
+      const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchInput(event.target.value);
+      };
 
+      const filteredFriends = addableFriends.filter((user) =>
+        user.username.toLowerCase().includes(searchInput.toLowerCase())
+      );
   return (
-    <div>
-      <h1 className='w-full text-center text-2xl p-4 border-b-2 border-opacity-60 border-white'>
-        Add Friends
-      </h1>
-      <div className='m-10'>
-        <Inputbox
-          name='Search for a user'
-          value={searchInput}
-          onChange={(e:any) => console.log("changed", e.target.value)}
-        />
-      </div>
-      <div className=' bg-pink-400 relative shadow-xl m-10 overflow-scroll'>
-        <div className='flex flex-col m-4 space-y-2 '>
-          {addableFriends &&
-            addableFriends.length > 0 &&
-            addableFriends.map((user, index) => (
-              <div key={index} className='text-4xl flex items-center justify-between'>
-                <p>{user.username}</p>
-                <button
-                  onClick={() => handleAddFriend(user.username)}
-                  className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xl'>
-                  Add Friend
-                </button>
-              </div>
-            ))}
-        </div>
+    <div className="max-h-screen w-full  relative right-0 shadow-xl">
+      <AnimatedHeading title="Add Friends" />
+      <div className="flex flex-col p-8 space-y-2 bg-pink-200 ">
+        <Inputbox name="Search for a User" value={searchInput} onChange={handleSearchInputChange} />
+        {filteredFriends.length > 0 &&
+          filteredFriends.map((user, index) => (
+            <div key={index} className="text-4xl flex items-center justify-evenly ">
+              <div className="w-full flex justify-between items-center space-x-4 rtl:space-x-reverse">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">{user.username}</p>
+                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">{user.email}</p>
+                    </div>
+                    <button
+                      onClick={() => handleAddFriend(user.username)}
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xl"
+                    >
+                      Add Friend
+                    </button>
+                  </div>
+            </div>
+          ))}
       </div>
     </div>
   );
-};
+}
 
-export default AddFriend;
+export default AddFriend

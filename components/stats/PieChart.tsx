@@ -33,13 +33,9 @@ const PieChart: React.FC = () => {
   
       if (response.ok) {
         const data = await response.json();
-        console.log("data: ", data);
-
-        setArtists(prevChartData => {
-          console.log('Received data:', data);
-          console.log('Previous chartData:', prevChartData);
-          return data; // Set the new state
-        });
+        console.log('Received data:', data);
+        setArtists(data);
+        return data; 
 
       } else {
         console.error('Failed to fetch data:', response.statusText);
@@ -51,17 +47,18 @@ const PieChart: React.FC = () => {
   };
   useEffect(() => {
     const fetchDataAndCreateChart = async () => {
-      await fetchData(); // Wait for the data to be fetched
-      PieChartCreate();
+      const wantedData = await fetchData(); // Wait for the data to be fetched
+      console.log("wantedData :" ,wantedData);
+      PieChartCreate(wantedData);
     };
     fetchDataAndCreateChart();
   }, []);
 
 
-  const PieChartCreate = ()=>{
-    const labels = Object.keys(artists);
+  const PieChartCreate = (artistsData: any)=>{
+    const labels = Object.keys(artistsData);
     console.log("asdasd" + labels);
-    const dataValues = Object.values(artists);
+    const dataValues = Object.values(artistsData);
     const dataPie = {
       type: 'pie',
       data: {
